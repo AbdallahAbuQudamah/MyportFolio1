@@ -1,0 +1,91 @@
+﻿@model List<MyportFolio1.Models.Tbmycard>
+
+<!-- Datatable CSS -->
+<link rel="stylesheet" href="~/Admin/css/dataTables.bootstrap4.min.css">
+
+<!-- Main Wrapper -->
+<div class="main-wrapper">
+
+
+    <div class="page-wrapper">
+        <div class="content container-fluid">
+
+            <!-- Page Header -->
+            <div class="page-header">
+                <div class="row">
+                    <div class="col">
+                        <h3 class="page-title">Data Tables</h3>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                            <li class="breadcrumb-item active">Data Tables</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- /Page Header -->
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card mb-0">
+                        <div class="card-header">
+                            <h4 class="card-title mb-0"><a asp-controller="Blog" asp-action="Edite" class="btn btn-success">Add New Data</a></h4>
+                            <p class="card-text">
+                                This is the most basic example of the datatables with zero configuration. Use the <code>.datatable</code> class to initialize datatables.
+                            </p>
+                        </div>
+                        <div class="card-body">
+
+                            <div class="table-responsive">
+                                <table class="datatable table table-stripped mb-0">
+                                    <thead>
+                                        <tr>
+
+
+                                            <th>Titel</th>
+                                            <th>Discrption</th>
+                                            <th>Image</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+
+                                        
+                                   @foreach (var Card in Model)
+                                    {
+                                      <tr>
+                                            <td>@Card.Title</td>
+                                            <td>@Card.Dis</td>
+                                            <td>
+                                                <img src="@string.Format("/CardUploads/{0}",Card.Img)" width="50" height="50" />
+                                            </td>
+                                            <td>
+                                                <a asp-controller="Blog" asp-action="Edite" asp-route-Id="@Card.Id" class="btn btn-info"> modfai</a>
+                                                <a asp-controller="Blog" asp-action="Delete" asp-route-Id="@Card.Id" class="btn btn-danger"> Delete</a>
+                                            </td>
+                                            
+                                      </tr>
+                                    }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- /Page Wrapper -->
+
+</div>
+@section scripts
+{
+    <!-- Datatable JS -->
+    <script src="~/Admin/js/jquery.dataTables.min.js"></script>
+    <script src="~/Admin/js/dataTables.bootstrap4.min.js"></script>
+}
+
+<!-- Datatable JS -->
+<script src="~/Admin/js/jquery.dataTables.min.js"></script>
+<script src="~/Admin/js/dataTables.bootstrap4.min.js"></script>
+
